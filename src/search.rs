@@ -13,7 +13,7 @@ use ignore::types::TypesBuilder;
 use ignore::{WalkBuilder, WalkState};
 
 /// Matcher strategy for the walk callback.
-enum Matcher {
+pub enum Matcher {
     /// The types pre-filter already handles extension matching; accept all entries.
     AcceptAll,
     /// Simple extension-only check (fallback when types filter setup failed).
@@ -57,7 +57,7 @@ enum Matcher {
 ///     .collect();
 /// ```
 pub struct Search {
-    rx: Box<dyn Iterator<Item = String>>,
+    pub rx: Box<dyn Iterator<Item = String>>,
 }
 
 impl Iterator for Search {
@@ -200,7 +200,7 @@ impl Search {
     }
 }
 
-fn build_matcher(
+pub fn build_matcher(
     search_input: Option<&str>,
     file_ext: Option<&str>,
     strict: bool,
@@ -232,7 +232,7 @@ fn build_matcher(
     }
 }
 
-fn is_excluded_dir(entry: &ignore::DirEntry, excluded_dirs: &[PathBuf]) -> bool {
+pub fn is_excluded_dir(entry: &ignore::DirEntry, excluded_dirs: &[PathBuf]) -> bool {
     if !entry.file_type().is_some_and(|ft| ft.is_dir()) {
         return false;
     }

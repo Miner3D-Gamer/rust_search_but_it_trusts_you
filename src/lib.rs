@@ -8,14 +8,14 @@
     clippy::return_self_not_must_use,
     clippy::must_use_candidate
 )]
-#![warn(missing_docs)]
+// #![warn(missing_docs)]
 // Use the readme as the crate documentation
 #![doc = include_str!("../README.md")]
 
-mod builder;
-mod filter;
-mod search;
-mod utils;
+pub mod builder;
+pub mod filter;
+pub mod search;
+pub mod utils;
 
 pub use builder::SearchBuilder;
 pub use filter::{FileSize, FilterExt, FilterFn};

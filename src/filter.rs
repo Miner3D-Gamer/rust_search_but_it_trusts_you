@@ -72,7 +72,7 @@ pub enum FileSize {
 }
 
 // helper function for FileSize conversion
-fn convert(b: f64, pow: u32) -> u64 {
+pub fn convert(b: f64, pow: u32) -> u64 {
     (b * 1024_u64.pow(pow) as f64) as u64
 }
 

@@ -27,7 +27,7 @@ pub fn build_regex_search_input(
     Regex::new(&formatted_search_input).unwrap()
 }
 
-fn set_case_insensitive(formatted_search_input: &str) -> String {
+pub fn set_case_insensitive(formatted_search_input: &str) -> String {
     "(?i)".to_owned() + formatted_search_input
 }
 
@@ -45,7 +45,7 @@ pub fn replace_tilde_with_home_dir(path: impl AsRef<Path>) -> PathBuf {
     path.to_path_buf()
 }
 
-fn file_name_from_path(path: &str) -> &str {
+pub fn file_name_from_path(path: &str) -> &str {
     Path::new(path)
         .file_name()
         .and_then(|f| f.to_str())
@@ -111,7 +111,7 @@ pub fn similarity_sort(vector: &mut [String], input: &str) {
     apply_permutation(vector, order);
 }
 
-fn apply_permutation<T>(v: &mut [T], mut order: Vec<usize>) {
+pub fn apply_permutation<T>(v: &mut [T], mut order: Vec<usize>) {
     for i in 0..v.len() {
         while order[i] != i {
             let j = order[i];

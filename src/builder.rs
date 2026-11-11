@@ -10,32 +10,32 @@ use ignore::DirEntry;
 /// Search behavior toggles collected away from the public builder fields.
 #[derive(Clone, Copy)]
 pub struct SearchOptions {
-    matching: MatchMode,
-    case_matching: CaseMatching,
-    hidden: Hidden,
-    git_ignore: GitIgnore,
+    pub matching: MatchMode,
+    pub case_matching: CaseMatching,
+    pub hidden: Hidden,
+    pub git_ignore: GitIgnore,
 }
 
 #[derive(Clone, Copy)]
-enum MatchMode {
+pub enum MatchMode {
     Fuzzy,
     Strict,
 }
 
 #[derive(Clone, Copy)]
-enum CaseMatching {
+pub enum CaseMatching {
     CaseSensitive,
     IgnoreCase,
 }
 
 #[derive(Clone, Copy)]
-enum Hidden {
+pub enum Hidden {
     Exclude,
     Include,
 }
 
 #[derive(Clone, Copy)]
-enum GitIgnore {
+pub enum GitIgnore {
     Respect,
     Ignore,
 }
@@ -74,23 +74,23 @@ pub struct SearchConfig {
 /// Builder for a [`Search`] instance, allowing for more complex searches.
 pub struct SearchBuilder {
     /// The location to search in, defaults to the current directory.
-    search_location: PathBuf,
+    pub search_location: PathBuf,
     /// Additional locations to search in.
-    more_locations: Option<Vec<PathBuf>>,
+    pub more_locations: Option<Vec<PathBuf>>,
     /// The search input, default will get all files from locations.
-    search_input: Option<String>,
+    pub search_input: Option<String>,
     /// The file extension to search for, defaults to get all extensions.
-    file_ext: Option<String>,
+    pub file_ext: Option<String>,
     /// The depth to search to, defaults to no limit.
-    depth: Option<usize>,
+    pub depth: Option<usize>,
     /// The limit of results to return, defaults to no limit.
-    limit: Option<usize>,
+    pub limit: Option<usize>,
     /// Behavior toggles for the search.
-    options: SearchOptions,
+    pub options: SearchOptions,
     /// Directory names or paths to exclude from traversal.
-    excluded_dirs: Vec<PathBuf>,
+    pub excluded_dirs: Vec<PathBuf>,
     /// Filters Vector, defaults to empty vec
-    filters: Vec<FilterType>,
+    pub filters: Vec<FilterType>,
 }
 
 impl SearchBuilder {
